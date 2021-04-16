@@ -9,5 +9,5 @@ find_package(OpenCV REQUIRED)
 include_directories(include)
 
 file(GLOB SOURCE_FILES "src/*.cpp")
-add_executable(main main.cpp ${SOURCE_FILES})
+add_executable(main main_trial.cpp ${SOURCE_FILES})
 target_link_libraries(main PUBLIC ethzasl_apriltag2)
