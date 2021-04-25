@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
       std::vector<cv::Vec3f>  objectpoints2 = Grid1.objpoints(detections2,Grid1.rows,Grid1.columns,Grid1.start_ID,Grid1.size,Grid1.spacing);
       int grid_points = Grid1.columns*Grid1.rows*4;
       int threshold = grid_points/2;
-      if(objectpoints1 == objectpoints2){
+      if(objectpoints1 == objectpoints2 && objectpoints1.size() > threshold){
       timagepoints1.push_back(imagepoints1);
       timagepoints2.push_back(imagepoints2);
       tobjectpoints1.push_back(objectpoints1);
