@@ -45,11 +45,12 @@ int main(int argc, char* argv[]) {
       cv::Mat image2 = cv::imread(image_name2, cv::IMREAD_GRAYSCALE);
       vector<AprilTags::TagDetection> detections2 = tagDetector.extractTags(image2);
       std::vector<cv::Vec2f>  imagepoints1 = Grid1.imgpoints(detections1,Grid1.rows,Grid1.columns,Grid1.start_ID);     
-      std::vector<cv::Vec3f>  objectpoints1 = Grid1.objpoints(Grid1.size,Grid1.spacing);
+      std::vector<cv::Vec3f>  objectpoints1 = Grid1.objpoints(detections1,Grid1.rows,Grid1.columns,Grid1.start_ID,Grid1.size,Grid1.spacing);
       std::vector<cv::Vec2f>  imagepoints2 = Grid1.imgpoints(detections2,Grid1.rows,Grid1.columns,Grid1.start_ID);     
-      std::vector<cv::Vec3f>  objectpoints2 = Grid1.objpoints(Grid1.size,Grid1.spacing);
+      std::vector<cv::Vec3f>  objectpoints2 = Grid1.objpoints(detections2,Grid1.rows,Grid1.columns,Grid1.start_ID,Grid1.size,Grid1.spacing);
       int grid_points = Grid1.columns*Grid1.rows*4;
-      if(imagepoints1.size() == grid_points && imagepoints2.size() == grid_points){
+      int threshold = grid_points/2;
+      if(objectpoints1 == objectpoints2){
       timagepoints1.push_back(imagepoints1);
       timagepoints2.push_back(imagepoints2);
       tobjectpoints1.push_back(objectpoints1);
@@ -64,7 +65,7 @@ int main(int argc, char* argv[]) {
   cv::Mat cameraMatrix1,distCoeffs1,R1,T1,newcameraMatrix1;
   cv::Mat cameraMatrix2,distCoeffs2,R2,T2,newcameraMatrix2;
   cv::calibrateCamera(tobjectpoints1, timagepoints1, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix1, distCoeffs1, R1, T1);
-  cv::calibrateCamera(tobjectpoints1, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2);
+  cv::calibrateCamera(tobjectpoints2, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2);
   newcameraMatrix1 = cv::getOptimalNewCameraMatrix(cameraMatrix1,distCoeffs1,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   newcameraMatrix2 = cv::getOptimalNewCameraMatrix(cameraMatrix2,distCoeffs2,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   std::cout << "cameraMatrix of camera 1: " << cameraMatrix1 << std::endl;
