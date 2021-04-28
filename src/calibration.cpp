@@ -36,7 +36,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       std::cout << "wrong camera number, please enter from 0, 1 and 2. the default value is 0 and the results are given with default value" << endl;
   }
 
-  int numberofimages = 30;
+  int numberofimages = 100;
   for(int i = 0; i < numberofimages; i++){
       std::stringstream input_image_name1 ;
       input_image_name1 << imagefoldername0;
