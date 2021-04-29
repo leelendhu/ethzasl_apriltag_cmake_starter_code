@@ -2,8 +2,6 @@
 #include "apriltags/TagDetector.h"
 #include "opencv2/opencv.hpp"
 #include "vis.hpp"
-#include "objectpoints.hpp"
-#include "imagepoints.hpp"
 #include "apriltags/Tag36h11.h"
 #include "apriltags/TagDetector.h"
 #include "apriltags/AprilGrid.h"
