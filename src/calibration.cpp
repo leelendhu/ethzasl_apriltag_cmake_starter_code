@@ -36,7 +36,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       std::cout << "wrong camera number, please enter from 0, 1 and 2. the default value is 0 and the results are given with default value" << endl;
   }
 
-  int numberofimages = 100;
+  int numberofimages = 30;
   for(int i = 0; i < numberofimages; i++){
       std::stringstream input_image_name1 ;
       input_image_name1 << imagefoldername0;
@@ -65,6 +65,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       std::vector<cv::Vec3f>  objectpoints2 = Grid1.objpoints(detections2,Grid1.rows,Grid1.columns,Grid1.start_ID,Grid1.size,Grid1.spacing);
       int grid_points = Grid1.columns*Grid1.rows*4;
       int threshold = grid_points/2;
+      
       if(objectpoints1 == objectpoints2 && objectpoints1.size() > threshold) {
       timagepoints1.push_back(imagepoints1);
       timagepoints2.push_back(imagepoints2);
@@ -120,7 +121,11 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
    calibrationmatrices.push_back(K2);
    calibrationmatrices.push_back(distCoeffs2);
    calibrationmatrices.push_back(R);
-   
-
+   cv::Mat Translation = cv::Mat(1,3,CV_32F);
+   Translation.col(0).setTo(T[0]);
+   Translation.col(1).setTo(T[1]);
+   Translation.col(2).setTo(T[2]);
+   calibrationmatrices.push_back(Translation);
+   cout << "inside function T is" << T << endl;
 return calibrationmatrices;
 }
