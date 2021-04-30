@@ -38,13 +38,13 @@ static const char *output_file = "../newconfig1.cfg";
   Setting & device1 = root.add ("device-1", libconfig::Setting::TypeString);
   device1 = "/dev/video1";
   Setting & device2 = root.add ("device-2", libconfig::Setting::TypeString);
-  device2 = "/dev/video0";
+  device2 = "/dev/video2";
   Setting & device3 = root.add ("device-3", libconfig::Setting::TypeString);
-  device3 = "/dev/video1";
+  device3 = "/dev/vide3";
   Setting & device4 = root.add ("device-4", libconfig::Setting::TypeString);
-  device4 = "/dev/video0";
+  device4 = "/dev/video4";
   Setting & device5 = root.add ("device-5", libconfig::Setting::TypeString);
-  device5 = "/dev/video1";
+  device5 = "/dev/video5";
   Setting & intshift = root.add ("intensity-shift", libconfig::Setting::TypeInt);
   intshift = 6;
 
