@@ -110,8 +110,8 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
                     cv::Size(Grid1.rows,Grid1.columns),R,T,rect1,rect2,proj_mat1,proj_mat2,Q,
                     1);
    std::cout << "stereo rectification underway" << std::endl;
-   std::cout << "extrinsic matrix of cam 1 is  " << rect1 << std::endl;
-   std::cout << "extrinsic matrix of cam 2 is  " << rect2 << std::endl;
+   std::cout << "rectification matrix of cam 1 is  " << rect1 << std::endl;
+   std::cout << "rectification matrix of cam 2 is  " << rect2 << std::endl;
    std::cout << "projection matrix of camera 1: " << proj_mat1 << std::endl;
    std::cout << "projection matrix of camera 2 : " << proj_mat2 << std::endl;
    
