@@ -109,18 +109,18 @@ static const char *output_file = "../newconfig1.cfg";
 
   Setting &Ext = Sensor0.add("Extrinsics", Setting::TypeArray);
 
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(0,0);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(0,1);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(0,2);
-  Ext.add(Setting::TypeFloat) = Translmat12.at<float>(0,0);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(1,0);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(1,1);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(1,2);
-  Ext.add(Setting::TypeFloat) = Translmat12.at<float>(0,1);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(2,0);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(2,1);
-  Ext.add(Setting::TypeFloat) = Rotmat12.at<double>(2,2);
-  Ext.add(Setting::TypeFloat) = Translmat12.at<float>(0,2);
+  Ext.add(Setting::TypeFloat) = 1.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 1.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
+  Ext.add(Setting::TypeFloat) = 1.0;
+  Ext.add(Setting::TypeFloat) = 0.0;
   Ext.add(Setting::TypeFloat) = 0.0;
   Ext.add(Setting::TypeFloat) = 0.0;
   Ext.add(Setting::TypeFloat) = 0.0;
@@ -169,18 +169,18 @@ static const char *output_file = "../newconfig1.cfg";
 
   Setting &Ext1 = Sensor1.add("Extrinsics", Setting::TypeArray);
 
-  Ext1.add(Setting::TypeFloat) = 1.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 1.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
-  Ext1.add(Setting::TypeFloat) = 1.0;
-  Ext1.add(Setting::TypeFloat) = 0.0;
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(0,0);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(0,1);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(0,2);
+  Ext1.add(Setting::TypeFloat) = Translmat12.at<float>(0,0);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(1,0);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(1,1);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(1,2);
+  Ext1.add(Setting::TypeFloat) = Translmat12.at<float>(0,1);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(2,0);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(2,1);
+  Ext1.add(Setting::TypeFloat) = Rotmat12.at<double>(2,2);
+  Ext1.add(Setting::TypeFloat) = Translmat12.at<float>(0,2);
   Ext1.add(Setting::TypeFloat) = 0.0;
   Ext1.add(Setting::TypeFloat) = 0.0;
   Ext1.add(Setting::TypeFloat) = 0.0;
@@ -246,18 +246,18 @@ cv::Mat Translmat34 = stereoparameters1[5];
 
   Setting &Ext3 = Sensor3.add("Extrinsics", Setting::TypeArray);
 
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(0,0);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(0,1);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(0,2);
-  Ext3.add(Setting::TypeFloat) = Translmat34.at<float>(0,0);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(1,0);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(1,1);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(1,2);
-  Ext3.add(Setting::TypeFloat) = Translmat34.at<float>(0,1);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(2,0);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(2,1);
-  Ext3.add(Setting::TypeFloat) = Rotmat34.at<double>(2,2);
-  Ext3.add(Setting::TypeFloat) = Translmat34.at<float>(0,2);
+  Ext3.add(Setting::TypeFloat) = 1.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 1.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
+  Ext3.add(Setting::TypeFloat) = 1.0;
+  Ext3.add(Setting::TypeFloat) = 0.0;
   Ext3.add(Setting::TypeFloat) = 0.0;
   Ext3.add(Setting::TypeFloat) = 0.0;
   Ext3.add(Setting::TypeFloat) = 0.0;
@@ -306,18 +306,18 @@ cv::Mat Translmat34 = stereoparameters1[5];
 
   Setting &Ext4 = Sensor4.add("Extrinsics", Setting::TypeArray);
 
-  Ext4.add(Setting::TypeFloat) = 1.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 1.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
-  Ext4.add(Setting::TypeFloat) = 1.0;
-  Ext4.add(Setting::TypeFloat) = 0.0;
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(0,0);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(0,1);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(0,2);
+  Ext4.add(Setting::TypeFloat) = Translmat34.at<float>(0,0);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(1,0);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(1,1);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(1,2);
+  Ext4.add(Setting::TypeFloat) = Translmat34.at<float>(0,1);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(2,0);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(2,1);
+  Ext4.add(Setting::TypeFloat) = Rotmat34.at<double>(2,2);
+  Ext4.add(Setting::TypeFloat) = Translmat34.at<float>(0,2);
   Ext4.add(Setting::TypeFloat) = 0.0;
   Ext4.add(Setting::TypeFloat) = 0.0;
   Ext4.add(Setting::TypeFloat) = 0.0;
@@ -383,23 +383,22 @@ cv::Mat Translmat56 = stereoparameters2[5];
 
   Setting &Ext5 = Sensor5.add("Extrinsics", Setting::TypeArray);
 
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(0,0);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(0,1);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(0,2);
-  Ext5.add(Setting::TypeFloat) = Translmat56.at<float>(0,0);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(1,0);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(1,1);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(1,2);
-  Ext5.add(Setting::TypeFloat) = Translmat56.at<float>(0,1);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(2,0);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(2,1);
-  Ext5.add(Setting::TypeFloat) = Rotmat56.at<double>(2,2);
-  Ext5.add(Setting::TypeFloat) = Translmat56.at<float>(0,2);
+  Ext5.add(Setting::TypeFloat) = 1.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
   Ext5.add(Setting::TypeFloat) = 0.0;
   Ext5.add(Setting::TypeFloat) = 0.0;
   Ext5.add(Setting::TypeFloat) = 0.0;
   Ext5.add(Setting::TypeFloat) = 1.0;
-  
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 1.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 0.0;
+  Ext5.add(Setting::TypeFloat) = 1.0;
 
 
 
@@ -443,23 +442,22 @@ cv::Mat Translmat56 = stereoparameters2[5];
 
   Setting &Ext6 = Sensor6.add("Extrinsics", Setting::TypeArray);
 
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(0,0);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(0,1);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(0,2);
+  Ext6.add(Setting::TypeFloat) = Translmat56.at<float>(0,0);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(1,0);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(1,1);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(1,2);
+  Ext6.add(Setting::TypeFloat) = Translmat56.at<float>(0,1);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(2,0);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(2,1);
+  Ext6.add(Setting::TypeFloat) = Rotmat56.at<double>(2,2);
+  Ext6.add(Setting::TypeFloat) = Translmat56.at<float>(0,2);
+  Ext6.add(Setting::TypeFloat) = 0.0;
+  Ext6.add(Setting::TypeFloat) = 0.0;
+  Ext6.add(Setting::TypeFloat) = 0.0;
   Ext6.add(Setting::TypeFloat) = 1.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 1.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 1.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 0.0;
-  Ext6.add(Setting::TypeFloat) = 1.0;
-
 
 
   try
