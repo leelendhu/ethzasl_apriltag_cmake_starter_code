@@ -2,7 +2,8 @@
 #define CALIBRATION_HPP_
 
 #include <vector>
-
+#include <stdlib.h>
+#include <stdio.h>
 #include "apriltags/TagDetection.h"
 #include "opencv2/opencv.hpp"
 #include "apriltags/Tag36h11.h"
@@ -21,5 +22,5 @@
 #include <opencv2/imgproc/imgproc.hpp>
 
 
-std::vector<cv::Mat> calibration(AprilTags::AprilGrid Grid, std::string imagefoldername, int cameranumber, int numberofimages);
+std::vector<cv::Mat> calibration(AprilTags::AprilGrid Grid, std::string imagefoldername, int cameranumber, int numberofimagesforcalibration,  int totalnumberofimages);
 #endif
