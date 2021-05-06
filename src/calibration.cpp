@@ -82,8 +82,10 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   cv::destroyAllWindows();
   cv::Mat cameraMatrix1,distCoeffs1,R1,T1,newcameraMatrix1;
   cv::Mat cameraMatrix2,distCoeffs2,R2,T2,newcameraMatrix2;
-  cv::calibrateCamera(tobjectpoints1, timagepoints1, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix1, distCoeffs1, R1, T1);
-  cv::calibrateCamera(tobjectpoints2, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2);
+  int flag1 = 0;
+  flag1 |= cv::CALIB_FIX_K3;
+  cv::calibrateCamera(tobjectpoints1, timagepoints1, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix1, distCoeffs1, R1, T1,flag1);
+  cv::calibrateCamera(tobjectpoints2, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2,flag1);
   newcameraMatrix1 = cv::getOptimalNewCameraMatrix(cameraMatrix1,distCoeffs1,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   newcameraMatrix2 = cv::getOptimalNewCameraMatrix(cameraMatrix2,distCoeffs2,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   std::cout << "cameraMatrix of sensor 0: " << cameraMatrix1 << std::endl;
