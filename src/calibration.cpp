@@ -1,6 +1,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <stdlib.h>
+#include <stdio.h>
 #include "apriltags/Tag36h11.h"
 #include "apriltags/TagDetector.h"
 #include "apriltags/AprilGrid.h"
@@ -11,7 +13,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::string imagefoldername, const int cameranumber, const int numberofimages) {
+std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::string imagefoldername, const int cameranumber, const int numberofimagesforcalibration, const int totalnumberofimages) {
   AprilTags::AprilGrid Grid1 = Grid;
   
   float grid_size = Grid1.size;
@@ -36,12 +38,14 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       std::cout << "wrong camera number, please enter from 0, 1 and 2. the default value is 0 and the results are given with default value" << endl;
   }
 
-  int noimg = numberofimages;
+  int noimg = numberofimagesforcalibration;
+  int totalnoimg = totalnumberofimages;
   for(int i = 0; i < noimg; i++){
       std::stringstream input_image_name1 ;
+      int ii = rand() % totalnoimg;
       input_image_name1 << imagefoldername0;
       input_image_name1 << "/img";
-      input_image_name1 << std::setw(6) << std::setfill('0')<<i;
+      input_image_name1 << std::setw(6) << std::setfill('0')<<ii;
       input_image_name1 << cameranum;
       input_image_name1 << "_0";
       input_image_name1 << ".png";
@@ -49,7 +53,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       std::stringstream input_image_name2;
       input_image_name2 << imagefoldername0;
       input_image_name2 << "/img";
-      input_image_name2 << std::setw(6) << std::setfill('0')<<i;
+      input_image_name2 << std::setw(6) << std::setfill('0')<<ii;
       input_image_name2 << cameranum;
       input_image_name2 << "_1";
       input_image_name2 << ".png";
@@ -71,9 +75,9 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       timagepoints2.push_back(imagepoints2);
       tobjectpoints1.push_back(objectpoints1);
       tobjectpoints2.push_back(objectpoints2);
-      cout << "image number"<< i << " accepted" << endl;
+      cout << "image number"<< ii << " accepted" << endl;
       }else {
-          cout << "image number" << i << " rejected" << endl;
+          cout << "image number" << ii << " rejected" << endl;
       }
   }
 
@@ -84,14 +88,16 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   cv::Mat cameraMatrix2,distCoeffs2,R2,T2,newcameraMatrix2;
   int flag1 = 0;
   flag1 |= cv::CALIB_FIX_K3;
-  cv::calibrateCamera(tobjectpoints1, timagepoints1, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix1, distCoeffs1, R1, T1,flag1);
-  cv::calibrateCamera(tobjectpoints2, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2,flag1);
+  double reprojerror1 = cv::calibrateCamera(tobjectpoints1, timagepoints1, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix1, distCoeffs1, R1, T1,flag1);
+  double reprojerror2 = cv::calibrateCamera(tobjectpoints2, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2,flag1);
   newcameraMatrix1 = cv::getOptimalNewCameraMatrix(cameraMatrix1,distCoeffs1,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   newcameraMatrix2 = cv::getOptimalNewCameraMatrix(cameraMatrix2,distCoeffs2,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   std::cout << "cameraMatrix of sensor 0: " << cameraMatrix1 << std::endl;
   std::cout << "distCoeffs of sensor 0 : " << distCoeffs1 << std::endl;
   std::cout << "cameraMatrix of sensor 1: " << cameraMatrix2 << std::endl;
   std::cout << "distCoeffs of sensor 1 : " << distCoeffs2 << std::endl;
+  std::cout << "Reprojection error of sensor 0 : " << reprojerror1 << std::endl;
+  std::cout << "Reprojection error of sensor 1 : " << reprojerror2 << std::endl;
   
   cv::Mat K1,K2,R,F,E,D1,D2;
   K1 = newcameraMatrix1;
