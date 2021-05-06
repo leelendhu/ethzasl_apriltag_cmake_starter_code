@@ -21,16 +21,17 @@ int main(int argc, char* argv[]) {
   int grid_columns = 8;
   int grid_startID = 0;
   AprilTags::AprilGrid Grid1(grid_rows,grid_columns,grid_size,grid_spacing,grid_startID);
-  int numberofimages = 40;
+  int numberofimages = 160;
+  int imagesforcalibration = 40;
   std::string imagefoldername0= "../data/vlog42";
   int cameranumber0 = 0;
-  std::vector<cv::Mat> matr0 = calibration(Grid1,imagefoldername0,cameranumber0, numberofimages);
+  std::vector<cv::Mat> matr0 = calibration(Grid1,imagefoldername0,cameranumber0, imagesforcalibration, numberofimages);
   std::string imagefoldername1= "../data/vlog42";
   int cameranumber1 = 1;
-  std::vector<cv::Mat> matr1 = calibration(Grid1,imagefoldername1,cameranumber1, numberofimages);
+  std::vector<cv::Mat> matr1 = calibration(Grid1,imagefoldername1,cameranumber1, imagesforcalibration, numberofimages);
   std::string imagefoldername2= "../data/vlog42";
   int cameranumber2 = 2;
-  std::vector<cv::Mat> matr2 = calibration(Grid1,imagefoldername2,cameranumber2, numberofimages);
+  std::vector<cv::Mat> matr2 = calibration(Grid1,imagefoldername2,cameranumber2, imagesforcalibration, numberofimages);
   
   int configfilerwrite = writeconfig(matr0,matr1,matr2);
   
