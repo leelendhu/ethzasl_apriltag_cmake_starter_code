@@ -86,10 +86,10 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   cv::calibrateCamera(tobjectpoints2, timagepoints2, cv::Size(Grid1.rows,Grid1.columns), cameraMatrix2, distCoeffs2, R2, T2);
   newcameraMatrix1 = cv::getOptimalNewCameraMatrix(cameraMatrix1,distCoeffs1,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
   newcameraMatrix2 = cv::getOptimalNewCameraMatrix(cameraMatrix2,distCoeffs2,cv::Size(Grid1.rows,Grid1.columns),1,cv::Size(Grid1.rows,Grid1.columns),0);
-  std::cout << "cameraMatrix of camera 1: " << cameraMatrix1 << std::endl;
-  std::cout << "distCoeffs of camera 1 : " << distCoeffs1 << std::endl;
-  std::cout << "cameraMatrix of camera 2: " << cameraMatrix2 << std::endl;
-  std::cout << "distCoeffs of camera 2 : " << distCoeffs2 << std::endl;
+  std::cout << "cameraMatrix of sensor 0: " << cameraMatrix1 << std::endl;
+  std::cout << "distCoeffs of sensor 0 : " << distCoeffs1 << std::endl;
+  std::cout << "cameraMatrix of sensor 1: " << cameraMatrix2 << std::endl;
+  std::cout << "distCoeffs of sensor 1 : " << distCoeffs2 << std::endl;
   
   cv::Mat K1,K2,R,F,E,D1,D2;
   K1 = newcameraMatrix1;
@@ -101,8 +101,8 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   flag |= cv::CALIB_FIX_INTRINSIC;
   std::cout << "stereo calibration underway" << std::endl;
   cv::stereoCalibrate(tobjectpoints1, timagepoints1, timagepoints2, K1, D1, K2, D2, cv::Size(Grid1.rows,Grid1.columns), R, T, E, F,flag);
-  std::cout << "new cameraMatrix of camera 1: " << K1 << std::endl;
-  std::cout << "new cameraMatrix of camera 2: " << K2 << std::endl;
+  std::cout << "new cameraMatrix of sensor 0: " << K1 << std::endl;
+  std::cout << "new cameraMatrix of sensor 1: " << K2 << std::endl;
   std::cout << "translation vector is " << T << std::endl;
 
   cv::Mat rect1, rect2, proj_mat1, proj_mat2, Q;
@@ -110,10 +110,10 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
                     cv::Size(Grid1.rows,Grid1.columns),R,T,rect1,rect2,proj_mat1,proj_mat2,Q,
                     1);
    std::cout << "stereo rectification underway" << std::endl;
-   std::cout << "rectification matrix of cam 1 is  " << rect1 << std::endl;
-   std::cout << "rectification matrix of cam 2 is  " << rect2 << std::endl;
-   std::cout << "projection matrix of camera 1: " << proj_mat1 << std::endl;
-   std::cout << "projection matrix of camera 2 : " << proj_mat2 << std::endl;
+   std::cout << "rectification matrix of sensor 0 is  " << rect1 << std::endl;
+   std::cout << "rectification matrix of sensor 1 is  " << rect2 << std::endl;
+   std::cout << "projection matrix of sensor 0: " << proj_mat1 << std::endl;
+   std::cout << "projection matrix of sensor 1 : " << proj_mat2 << std::endl;
    
    std::vector<cv::Mat> calibrationmatrices;
    calibrationmatrices.push_back(K1);
