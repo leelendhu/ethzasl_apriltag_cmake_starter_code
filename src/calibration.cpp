@@ -28,6 +28,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   std::vector<std::vector<cv::Vec3f>> tobjectpoints2;
   std::string imagefoldername0 = imagefoldername; 
   std::string cameranum = "_0";
+  
   if(cameranumber == 0){
       cameranum = "_0";
   }else if(cameranumber == 1){
@@ -40,7 +41,8 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
 
   int noimg = numberofimagesforcalibration;
   int totalnoimg = totalnumberofimages;
-  for(int i = 0; i < noimg; i++){
+  int accimg = 0;
+  for(int i = 0; accimg < noimg; i++){
       std::stringstream input_image_name1 ;
       int ii = rand() % totalnoimg;
       input_image_name1 << imagefoldername0;
@@ -48,7 +50,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       input_image_name1 << std::setw(6) << std::setfill('0')<<ii;
       input_image_name1 << cameranum;
       input_image_name1 << "_0";
-      input_image_name1 << ".png";
+      input_image_name1 << ".pgm";
       std::string image_name1 = input_image_name1.str();
       std::stringstream input_image_name2;
       input_image_name2 << imagefoldername0;
@@ -56,7 +58,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       input_image_name2 << std::setw(6) << std::setfill('0')<<ii;
       input_image_name2 << cameranum;
       input_image_name2 << "_1";
-      input_image_name2 << ".png";
+      input_image_name2 << ".pgm";
       std::string image_name2 = input_image_name2.str();
       cv::Mat image1 = cv::imread(image_name1, cv::IMREAD_GRAYSCALE);
       AprilTags::TagDetector tagDetector(AprilTags::tagCodes36h11);
@@ -76,13 +78,19 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
       tobjectpoints1.push_back(objectpoints1);
       tobjectpoints2.push_back(objectpoints2);
       cout << "image number"<< ii << " accepted" << endl;
+      accimg = accimg + 1;
       }else {
           cout << "image number" << ii << " rejected" << endl;
+      }
+      int th =  totalnoimg - 5;
+      if(i > th){
+          cout << "not enough good images" << endl;
+          break;
       }
   }
 
 
-  std::cout << "calibrating underway" << std::endl;
+  std::cout << "calibrating underway for camera " << cameranumber <<  std::endl;
   cv::destroyAllWindows();
   cv::Mat cameraMatrix1,distCoeffs1,R1,T1,newcameraMatrix1;
   cv::Mat cameraMatrix2,distCoeffs2,R2,T2,newcameraMatrix2;
@@ -106,8 +114,8 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   D2 = distCoeffs2;
   cv::Vec3d T;
   int flag = 0;
-  flag |= cv::CALIB_FIX_INTRINSIC;
-  std::cout << "stereo calibration underway" << std::endl;
+  flag |= cv::CALIB_USE_INTRINSIC_GUESS;
+  std::cout << "stereo calibration underway for camera " << cameranumber << std::endl;
   cv::stereoCalibrate(tobjectpoints1, timagepoints1, timagepoints2, K1, D1, K2, D2, cv::Size(Grid1.rows,Grid1.columns), R, T, E, F,flag);
   std::cout << "new cameraMatrix of sensor 0: " << K1 << std::endl;
   std::cout << "new cameraMatrix of sensor 1: " << K2 << std::endl;
@@ -117,7 +125,7 @@ std::vector<cv::Mat> calibration(const AprilTags::AprilGrid Grid, const std::str
   cv::stereoRectify(newcameraMatrix1,distCoeffs1,newcameraMatrix2,distCoeffs2,
                     cv::Size(Grid1.rows,Grid1.columns),R,T,rect1,rect2,proj_mat1,proj_mat2,Q,
                     1);
-   std::cout << "stereo rectification underway" << std::endl;
+   std::cout << "stereo rectification underway for camera " << cameranumber <<  std::endl;
    std::cout << "rectification matrix of sensor 0 is  " << rect1 << std::endl;
    std::cout << "rectification matrix of sensor 1 is  " << rect2 << std::endl;
    std::cout << "projection matrix of sensor 0: " << proj_mat1 << std::endl;
