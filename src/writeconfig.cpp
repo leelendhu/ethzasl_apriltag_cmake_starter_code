@@ -73,7 +73,7 @@ static const char *output_file = "../newconfig1.cfg";
   Setting &Sensor0 = Camera0.add("Sensor0", Setting::TypeGroup);
 
 
-  Setting & rotation = Sensor0.add ("rotation", libconfig::Setting::TypeBoolean);
+  Setting & rotation = Sensor0.add ("rotated", libconfig::Setting::TypeBoolean);
   rotation = false;
 
 
@@ -132,7 +132,7 @@ static const char *output_file = "../newconfig1.cfg";
   Setting &Sensor1 = Camera0.add("Sensor1", Setting::TypeGroup);
 
 
-  Setting & rotation1 = Sensor1.add ("rotation", libconfig::Setting::TypeBoolean);
+  Setting & rotation1 = Sensor1.add ("rotated", libconfig::Setting::TypeBoolean);
   rotation1 = false;
 
 
@@ -210,7 +210,7 @@ cv::Mat Translmat34 = stereoparameters1[5];
   Setting &Sensor3 = Camera1.add("Sensor0", Setting::TypeGroup);
 
 
-  Setting & rotation3 = Sensor3.add ("rotation", libconfig::Setting::TypeBoolean);
+  Setting & rotation3 = Sensor3.add ("rotated", libconfig::Setting::TypeBoolean);
   rotation3 = false;
 
 
@@ -269,7 +269,7 @@ cv::Mat Translmat34 = stereoparameters1[5];
   Setting &Sensor4 = Camera1.add("Sensor1", Setting::TypeGroup);
 
 
-  Setting & rotation4 = Sensor4.add ("rotation", libconfig::Setting::TypeBoolean);
+  Setting & rotation4 = Sensor4.add ("rotated", libconfig::Setting::TypeBoolean);
   rotation4 = false;
 
 
@@ -347,7 +347,7 @@ cv::Mat Translmat56 = stereoparameters2[5];
   Setting &Sensor5 = Camera2.add("Sensor0", Setting::TypeGroup);
 
 
-  Setting & rotation5 = Sensor5.add ("rotation", libconfig::Setting::TypeBoolean);
+  Setting & rotation5 = Sensor5.add ("rotated", libconfig::Setting::TypeBoolean);
   rotation5 = false;
 
 
@@ -405,7 +405,7 @@ cv::Mat Translmat56 = stereoparameters2[5];
   Setting &Sensor6 = Camera2.add("Sensor1", Setting::TypeGroup);
 
 
-  Setting & rotation6 = Sensor6.add ("rotation", libconfig::Setting::TypeBoolean);
+  Setting & rotation6 = Sensor6.add ("rotated", libconfig::Setting::TypeBoolean);
   rotation6 = false;
 
 
