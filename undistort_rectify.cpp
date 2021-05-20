@@ -73,8 +73,8 @@ int main(int argc, char* argv[]) {
   cv::remap(img2, imgU2, rmapx, rmapy, cv::INTER_LINEAR);
   
   // the undistorted and rectified images based on the calibration results from imagefoldername0
-  cv::imwrite("../cube0_8x6_70cm.png", imgU1);
-  cv::imwrite("../cube1_8x6_70cm.png", imgU2);
+  cv::imwrite("../cube0_8x6_40cm.png", imgU1);
+  cv::imwrite("../cube1_8x6_40cm.png", imgU2);
 
 
 
