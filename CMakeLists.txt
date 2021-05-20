@@ -16,5 +16,8 @@ include_directories(include)
 
 file(GLOB SOURCE_FILES "src/*.cpp")
 add_executable(main main.cpp ${SOURCE_FILES})
+add_executable(undistort undistort_rectify.cpp ${SOURCE_FILES})
 target_link_libraries(main PUBLIC ethzasl_apriltag2)
 target_link_libraries(main PUBLIC ethzasl_apriltag2 ${LIBCONFIG_LIBRARIES})
+target_link_libraries(undistort PUBLIC ethzasl_apriltag2)
+target_link_libraries(undistort PUBLIC ethzasl_apriltag2 ${LIBCONFIG_LIBRARIES})
