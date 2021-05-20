@@ -15,3 +15,11 @@ make
 ```
 ./main
 ```
+**Undistorting and rectifying images**
+```
+./undistort
+```
+**Creating disparity maps**
+```
+python match.py
+```
