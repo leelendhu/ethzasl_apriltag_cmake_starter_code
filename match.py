@@ -1,8 +1,8 @@
 import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
-imgL = cv.imread('comparision/8x6/cube0_8x6_40cm.png',0)
-imgR = cv.imread('comparision/8x6/cube1_8x6_40cm.png',0)
+imgL = cv.imread('cube0_8x6_40cm.png',0)
+imgR = cv.imread('cube1_8x6_40cm.png',0)
 
 
 window_size = 3
