@@ -21,5 +21,6 @@ make
 ```
 **Creating disparity maps**
 ```
+cd ..
 python match.py
 ```
