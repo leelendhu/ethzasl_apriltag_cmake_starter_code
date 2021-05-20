@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
   int numberofimages = 160;
   int imagesforcalibration = 40;
   // change to the name of the folder whose calibration results you will be using for undistorting and rectifying the images
-  std::string imagefoldername0= "../data/Monday_8x6/Mon_40cm";
+  std::string imagefoldername0= "../data/8x6/40cm";
   int cameranumber0 = 0;
    
   std::vector<cv::Mat> matr0 = calibrationstore(Grid1,imagefoldername0,cameranumber0, imagesforcalibration, numberofimages);
