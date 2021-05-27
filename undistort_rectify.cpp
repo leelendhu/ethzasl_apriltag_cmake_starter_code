@@ -11,11 +11,8 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include "calibration.hpp"
-#include "calibrationrandom.hpp"
-#include "calibrationrandre.hpp"
 #include "calibrationstore.hpp"
 #include "writeconfig.hpp"
-#include "rewriteconfig.hpp"
 #include <thread>
 #include <stdlib.h>
 #include <stdio.h>
